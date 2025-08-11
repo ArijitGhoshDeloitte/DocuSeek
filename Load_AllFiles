@@ -1,0 +1,81 @@
+import os
+import shutil
+from dotenv import load_dotenv
+from langchain.schema import Document
+from langchain_community.vectorstores import Chroma
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_community.document_loaders import DirectoryLoader
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
+import google.generativeai as genai
+from langchain_community.document_loaders import PyPDFLoader, UnstructuredWordDocumentLoader
+import chromadb
+from chromadb import Documents, EmbeddingFunction, Embeddings
+GOOGLE_API_KEY = 'AIzaSyD6potSTkJcaEHJD4mUaAmNFA2BVDwY7oI'
+
+os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
+
+genai.configure(api_key = GOOGLE_API_KEY)
+
+CHROMA_PATH = "chroma"
+DATA_PATH = "data"
+
+embedding_function = GoogleGenerativeAIEmbeddings(
+    model="models/embedding-001",
+    task_type="RETRIEVAL_DOCUMENT"
+)
+
+
+def main():
+    generate_data_store()
+
+def generate_data_store():
+    documents = load_documents()
+    chunks = split_text(documents)
+    save_to_chroma(chunks)
+
+def load_documents():
+    loaders = [
+        DirectoryLoader(DATA_PATH, glob="*.md"),  # Markdown
+        DirectoryLoader(DATA_PATH, glob="*.pdf", loader_cls=PyPDFLoader),  # PDF
+        DirectoryLoader(DATA_PATH, glob="*.docx", loader_cls=UnstructuredWordDocumentLoader)  # Word
+    ]
+
+    documents = []
+    for loader in loaders:
+        docs = loader.load()
+        print(f"Loaded {len(docs)} docs with {loader.glob}")
+        documents.extend(docs)
+
+    return documents
+
+def split_text(documents):
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=1200,
+        chunk_overlap=100,
+        length_function=len,
+        add_start_index=True
+    )
+    chunks = text_splitter.split_documents(documents)
+    print(f"Split {len(documents)} documents into {len(chunks)} chunks.")
+    document = chunks[10]
+    print(document.page_content)
+    print(document.metadata)
+
+    return chunks
+
+def save_to_chroma(chunks):
+    if os.path.exists(CHROMA_PATH):
+        shutil.rmtree(CHROMA_PATH)
+
+    db = Chroma.from_documents(
+        chunks,
+        embedding=embedding_function,
+        persist_directory=CHROMA_PATH
+    )
+    
+    print(f"Saved {len(chunks)} chunks to {CHROMA_PATH}.")
+
+
+if __name__ == "__main__":
+    main()
+

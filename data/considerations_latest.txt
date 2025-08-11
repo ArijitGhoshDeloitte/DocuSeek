@@ -1,0 +1,47 @@
+<div class="modal-body">
+         
+    <h2>Deliverability Issues</h2>
+    <ul>
+      <li><strong>Email Content:</strong>Avoiding heavily promotional or offer-related content in emails can help reduce the likelihood of emails being marked as spam, which is crucial during the IP warming process. Additionally, including alt tags for images ensures that recipients can still understand the content of the email even if the images do not load, and it can also improve email deliverability by making the emails more accessible and user-friendly.</li>
+      
+        <li><strong>Email Blocking:</strong> ISPs and email providers might block emails from new IPs if they perceive them as spam, especially if the warm-up process isn't followed or if high volumes are sent too early.</li>
+        <li><strong>Low Open and Engagement Rates:</strong> If emails are not delivered to the inbox due to reputation issues, engagement rates will suffer, further impacting reputation.</li>
+        <li><strong>Spam Folder Placement:</strong> New IPs with no history may be immediately placed in spam folders, hindering effective communication.</li>
+    </ul>
+    
+    <h2>Bounce Rate Management</h2>
+    <ul>
+      <li>
+        <strong>Domain related isues:</strong>Microsoft-related domains often cause block bounces due to their stringent spam filtering strategy. When block bounces occur, it is essential to raise a Salesforce case and contact the Microsoft team to lift the bounce.
+      </li>
+        <li><strong>High Bounce Rates:</strong> A high bounce rate can negatively impact IP reputation, potentially leading to further deliverability issues.</li>
+        <li><strong>Invalid Email Addresses:</strong> Sending to invalid or inactive addresses can contribute to high bounce rates and damage reputation.</li>
+    </ul>
+    
+    <h2>ISP and Rate Limiting Issues</h2>
+    <ul>
+        <li><strong>ISP Blocking:</strong> ISPs may block emails from IPs if they perceive high volumes or irregular patterns as spam.</li>
+        <li><strong>Rate Limiting:</strong> Some email providers might limit the number of emails an IP can send per day, hindering the warm-up process.</li>
+    </ul>
+    
+    <h2>Monitoring and Adjustment Challenges</h2>
+    <ul>
+        <li><strong>Tracking Performance Metrics:</strong> It's crucial to monitor metrics like engagement, deliverability, and bounce rates to adjust the warm-up strategy accordingly.</li>
+        <li><strong>Adjusting Strategy:</strong> Adapting the sending volume, content, and schedule based on performance data is essential for successful warm-up.</li>
+    </ul>
+    
+    <h2>General Issues</h2>
+    <ul>
+        <li><strong>Verification Problems:</strong> Ensuring proper DKIM and SPF records are set up is crucial for successful IP warming.</li>
+        <li><strong>SMTP Issues:</strong> Problems with SMTP configuration can also impact email deliverability and warm-up.</li>
+    </ul>
+    
+    <h2>Increasing Throughput</h2>
+    <ul>
+        <li><strong>Gradual Volume Increase:</strong> Rushing the warm-up process with high volumes can negatively impact reputation and lead to ISP blocking.</li>
+        <li><strong>Monitoring and Adjustment:</strong> Continuous monitoring and adjustment of sending volume are necessary to build a good reputation.</li>
+    </ul>
+    
+    <p>By addressing these potential issues proactively and following best practices for IP warming, projects can minimize disruptions and achieve successful email deliverability.</p>
+
+    </div>

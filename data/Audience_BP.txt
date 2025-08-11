@@ -1,0 +1,19 @@
+IP Warming Audience Selection Best Practices
+
+
+Start with Highly Engaged Contacts:
+
+Initial Sends: Begin your IP warming process by sending emails to your most engaged contacts. These are users who have recently opened and clicked on your emails. This helps to establish a positive sender reputation with ISPs (Internet Service Providers) as these users are more likely to interact with your emails positively.
+
+
+
+Scrub Your Email List:
+
+Remove Invalid Addresses: Ensure that your email list is clean by removing any invalid email addresses. Sending emails to invalid addresses can result in high bounce rates, which negatively impact your sender reputation.
+Eliminate Inactive Contacts: Remove contacts that have not engaged with your emails in the last 3-6 months. Sending to inactive users can lead to low engagement rates and potential spam complaints.
+
+
+
+Identify and Remove Potential Spam Traps:
+
+Secondary Check: Perform a thorough secondary check on your email list to identify and remove potential spam traps. Spam traps are email addresses that are either dormant or specifically set up to catch spammers. Sending to these addresses can severely damage your sender reputation.
